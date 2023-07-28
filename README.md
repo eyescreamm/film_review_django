@@ -25,27 +25,112 @@ Tables:
 
 Film
 
-|Column|Type|Comment|　
-| --- | --- | --- |
-| id | int | unique film ID |
-| title | char(100)  | film title |
-| count_reviews | int | total number of reviews |
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>int</td>
+      <td>unique film ID</td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>char(100)</td>
+      <td>film title</td>
+    </tr>
+    <tr>
+      <td>count_reviews</td>
+      <td>int</td>
+      <td>total number of reviews</td>
+    </tr>
+  </tbody>
+</table>
 
 User
-| Column | Type | Comment　|　
-| ---- | ---- | ---- |
-| id | int | unique user ID |
-| name | char(20)  | user name |
-| email | email field | user's email address |
-| password | char(100) | user's login password |
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>int</td>
+      <td>unique user ID</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>char(20)</td>
+      <td>user name</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>email field</td>
+      <td>user's email address</td>
+    </tr>
+    <tr>
+      <td>password</td>
+      <td>char(100)</td>
+      <td>user' login password</td>
+    </tr>
+  </tbody>
+</table>
 
 Review
-| Column | Type | Comment　|　
-| ---- | ---- | ---- |
-| id | int | unique review ID |
-| user | user object  | user |
-| film | film object | film |
-| rating | int | rating of film (1~5) |
-| comment | char | comment of film |
-| created_at | date  | creating date |
-| updated_at | date | updating date |
+
+<table>
+  <thead>
+    <tr>
+      <th>Column</th>
+      <th>Type</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>int</td>
+      <td>unique review ID</td>
+    </tr>
+    <tr>
+      <td>user</td>
+      <td>user object</td>
+      <td>user</td>
+    </tr>
+    <tr>
+      <td>film</td>
+      <td>film object</td>
+      <td>film</td>
+    </tr>
+    <tr>
+      <td>rating</td>
+      <td>int</td>
+      <td>rating of film (1~5)</td>
+    </tr>
+    <tr>
+      <td>comment</td>
+      <td>char</td>
+      <td>comment of film</td>
+    </tr>
+    <tr>
+      <td>created_at</td>
+      <td>date</td>
+      <td>creating date</td>
+    </tr>
+    <tr>
+      <td>updated_at</td>
+      <td>date</td>
+      <td>updating date</td>
+    </tr>
+  </tbody>
+</table>
