@@ -8,7 +8,7 @@ The proposed web application allows the user to post and read film reviews. The 
 - User can register or login to write the reviews.
 - Writing the rating and comment about each movie
 
-The curren or furture works:
+The current and furture works:
 
 - Implement function of sorting and filtering movie list by rating.
 - Create mypage to see the list of review written by each user.
