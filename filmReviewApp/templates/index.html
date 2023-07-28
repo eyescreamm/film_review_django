@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/45b1cdff0b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>film review</title>
+  </head>
+  <body class="">
+    <div class="w-4/5 mx-auto">
+      <header class="flex justify-between py-16">
+        <div class="text-lg font-bold">film Reviw</div>
+        <div class="flex justify-end">
+          <div class="mx-5">
+            <a href="/"><i class="fa-solid fa-house mr-2"></i>home</a>
+          </div>
+          {% if username %}
+          <div class="mx-5">
+            <a href="#"><i class="fa-solid fa-user mr-2"></i>{{ username }}</a>
+          </div>
+          <div class="mx-5">
+            <a href="/logout"
+              ><i class="fa-solid fa-right-from-bracket mr-2"></i>logout</a
+            >
+          </div>
+          {% else %}
+          <div class="mx-5">
+            <a href="/signup"
+              ><i class="fa-solid fa-user-plus mr-2"></i>singup</a
+            >
+          </div>
+          <div class="mx-5">
+            <a href="/login"
+              ><i class="fa-solid fa-right-to-bracket mr-2"></i>login</a
+            >
+          </div>
+          {% endif %}
+        </div>
+      </header>
+      <hr />
+      <div
+        class="grid gap-x-4 gap-y-8 sm:grid-cols-3 md:gap-x-6 lg:grid-cols-4 xl:grid-cols-5"
+      >
+        <div class="sm:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+        <div class="my-5 text-end">
+          <select
+            onchange="sort_filter(this.value, this.nextElementSibling.value)"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[45%] mr-3 p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            {% for choise in sort_list %} {% if sort == choise %}
+            <option value="{{choise}}" selected>{{ choise }}</option>
+            {% else %}
+            <option value="{{choise}}">{{ choise }}</option>
+            {% endif %} {% endfor %}
+          </select>
+          <select
+            onchange="sort_filter(this.nextElementSibling, this.value)"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[45%] p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            {% for choise in filter_list %} {% if filter == choise %}
+            <option value="{{choise}}" selected>{{ choise }}</option>
+            {% else %}
+            <option value="{{choise}}">{{ choise }}</option>
+            {% endif %} {% endfor %}
+          </select>
+        </div>
+      </div>
+      {% if film_list %}
+      <div
+        class="grid gap-x-4 gap-y-8 sm:grid-cols-3 md:gap-x-6 lg:grid-cols-4 xl:grid-cols-5"
+      >
+        {% for film in film_list %}
+        <a
+          href="/film/{{ film.id }}/"
+          class="group relative mb-2 block h-90 overflow-hidden rounded-lg bg-gray-100 lg:mb-3"
+        >
+          <img
+            src="{{film.poster}}"
+            alt=""
+            class="h-full w-full object-cover object-center transition duration-200 scale-75 group-hover:scale-100"
+          />
+        </a>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No title are available.</p>
+      {% endif %}
+    </div>
+    <script>
+      const sort_filter = (sort, filter) => {
+        console.log(sort, filter);
+        window.location.href = `/?sort=${sort}&filter=${filter}`;
+      };
+    </script>
+  </body>
+</html>

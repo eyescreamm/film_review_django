@@ -1,0 +1,16 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>login</title>
+</head>
+<body>
+  {% if text %}
+  <p>{{ text }}</p>
+  {% else %} {% endif %}
+  <form action="" method="POST"></br>
+    username:{{ form.name }}</br>
+    password:{{ form.password }}</br>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary btn-lg">submit</button>
+  </form>
+</body>

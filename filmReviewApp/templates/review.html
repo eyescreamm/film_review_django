@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/45b1cdff0b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>film review</title>
+  </head>
+  <body class="">
+    <div class="w-4/5 mx-auto">
+      <header class="flex justify-between py-16">
+        <div class="text-lg font-bold">film Reviw</div>
+        <div class="flex justify-end">
+          <div class="mx-5">
+            <a href="/"><i class="fa-solid fa-house mr-2"></i>home</a>
+          </div>
+          {% if username %}
+          <div class="mx-5">
+            <a href="#"><i class="fa-solid fa-user mr-2"></i>{{ username }}</a>
+          </div>
+          <div class="mx-5">
+            <a href="/logout"
+              ><i class="fa-solid fa-right-from-bracket mr-2"></i>logout</a
+            >
+          </div>
+          {% else %}
+          <div class="mx-5">
+            <a href="/signup"
+              ><i class="fa-solid fa-user-plus mr-2"></i>singup</a
+            >
+          </div>
+          <div class="mx-5">
+            <a href="/login"><i class="fa-solid fa-right-to-bracket mr-2"></i>login</a>
+          </div>
+          {% endif %}
+        </div>
+      </header>
+      <hr />
+      {% if text %}
+      <p>{{ text }}</p>
+      {% else %} {% endif %}
+      <form action="" method="POST"></br>
+        rating:{{ form.rating }}</br>
+        comment:{{ form.comment }}</br>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-lg">submit</button>
+      </form>
+    </div>
+  </body>
+</html>

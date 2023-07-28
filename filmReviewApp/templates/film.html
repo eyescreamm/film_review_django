@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../static/film.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/45b1cdff0b.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>{{film.title}}</title>
+  </head>
+  <body class="">
+    <div class="w-4/5 mx-auto">
+      <header class="flex justify-between py-16">
+        <div class="text-lg font-bold">film Reviw</div>
+        <div class="flex justify-end">
+          <div class="mx-5">
+            <a href="/"><i class="fa-solid fa-house mr-2"></i>home</a>
+          </div>
+          {% if username %}
+          <div class="mx-5">
+            <a href="#"><i class="fa-solid fa-user mr-2"></i>{{ username }}</a>
+          </div>
+          <div class="mx-5">
+            <a href="/logout"
+              ><i class="fa-solid fa-right-from-bracket mr-2"></i>logout</a
+            >
+          </div>
+          {% else %}
+          <div class="mx-5">
+            <a href="/signup"
+              ><i class="fa-solid fa-user-plus mr-2"></i>singup</a
+            >
+          </div>
+          <div class="mx-5">
+            <a href="/login"
+              ><i class="fa-solid fa-right-to-bracket mr-2"></i>login</a
+            >
+          </div>
+          {% endif %}
+        </div>
+      </header>
+      <hr />
+      <div class="w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 mt-20">
+        <div class="lg:col-span-4">
+          <div class="bg-gray-100 rounded-xl relative overflow-hidden">
+            <img
+              src="{{film.poster}}"
+              loading="lazy"
+              alt=""
+              class="h-full w-full object-cover object-center transition duration-200 scale-75 rounded-xl"
+            />
+          </div>
+        </div>
+        <div class="lg:col-span-8 bg-gray-100 rounded-xl">
+          <div class="m-20">
+            <p class="font-medium text-3xl">{{film.title}}</p>
+            <hr class="my-3" />
+            <p>
+              <span
+                class="relative z-0 inline-block whitespace-nowrap text-[#CCCCCC] before:content-['★★★★★'] after:content-['★★★★★'] after:absolute after:z-10 after:top-0 after:left-0 after:overflow-hidden after:whitespace-nowrap after:text-[#ffcf32] after:w-[{{rating_for_star}}%] text-2xl mb-3"
+              ></span>
+              {% if rating == 0 %}
+              <span class="text-2xl text-[#CCCCCC] ml-3">-</span>
+              {% else %}
+              <span class="text-2xl after:text-[#ffcf32] ml-3"
+                >{{ rating }}</span
+              >
+              <span class="ml-2">({{film.count_reviews}} reviews)</span>
+              {% endif %}
+            </p>
+            <p>year : {{film.year}}</p>
+            <p>genre : {{film.genre}}</p>
+            <p>runtime : {{film.runtime}}</p>
+            <p>director : {{film.director}}</p>
+            <p>plot:</p>
+            <p>{{film.plot}}</p>
+          </div>
+          <div class="text-center">
+            <a href="/review/{{ film.id }}"
+              ><i class="fa-solid fa-pen mr-2"></i>write a review</a
+            >
+          </div>
+        </div>
+        <div class="text-center"></div>
+        {% if review_list %}
+        <div class="col-span-12 mt-52"></div>
+        {% for review in review_list %}
+        <div class="lg:col-span-4 bg-gray-100 rounded-xl my-20">
+          <div class="m-10">
+            <p class="text-lg font-bold">{{review.user.name}}</p>
+            <p class="text-sm text-slate-500">{{review.created_at}}</p>
+            <span
+              class="relative z-0 inline-block whitespace-nowrap text-[#CCCCCC] before:content-['★★★★★'] after:content-['★★★★★'] after:absolute after:z-10 after:top-0 after:left-0 after:overflow-hidden after:whitespace-nowrap after:text-[#ffcf32] after:w-[{{review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating|add:review.rating}}%] my-2 text-xl"
+            ></span>
+            <p>{{review.comment}}</p>
+          </div>
+        </div>
+        {% endfor %} {% else %} {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
